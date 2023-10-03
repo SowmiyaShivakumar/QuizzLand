@@ -1,11 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert,Pressable } from 'react-native';
 
 const Answer=(props:any)=>{
+    const isTrue =()=>{
+        if(props.answer==props.correct_answer){
+            // Alert.alert("Right");
+            props.setScore((prev: number) => prev+1);
+        }
+        else{
+            // Alert.alert("Wrong");
+        }
+        // props.nextQuestion();
+    }
   return(
-    <View style = {styles.container}>
+    <Pressable style = {styles.container} onPress={isTrue}>
       <Text style={styles.answer}>{props.answer}</Text>
-    </View>
+    </Pressable>
   );
 }
 const styles = StyleSheet.create({

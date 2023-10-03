@@ -1,15 +1,22 @@
-import { View,Text,StyleSheet, Image, ImageSourcePropType, SafeAreaView  } from 'react-native'
+import { View,Text,StyleSheet, Image, ImageSourcePropType, SafeAreaView, Pressable  } from 'react-native'
 import React from 'react'
-
-const Category = (props: { image: ImageSourcePropType; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined }) =>{
+import {useNavigation} from '@react-navigation/native';
+const Category = (props: { image: ImageSourcePropType; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined ; categoryId:string | number}) =>{
+    const navigation = useNavigation();
+    const gotoQuiz = ()=>{
+        navigation.navigate("Playground", {
+            categoryId: props.id,
+          } );
+    };
     return(
         <SafeAreaView style={styles.page}>
         <View style={styles.full}>
-        <View style={styles.container}>
+        <Pressable style={styles.container} onPress={gotoQuiz}>
            <Image source={props.image}
            style={styles.images}/>
            <Text style={styles.title}>{props.title}</Text>
-        </View>
+        
+        </Pressable>
         </View>
         </SafeAreaView>
     )

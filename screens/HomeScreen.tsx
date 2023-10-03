@@ -45,9 +45,9 @@ const HomeScreen = () =>{
             
             <FlatList
              data={categories}
-             renderItem={({item})=><Category image={item.image} title={item.title}/>}
+             renderItem={({item})=><Category image={item.image} title={item.title} id={item.id}/>}
              keyExtractor={(item)=>item.id}
-             showsVerticalScrollIndicator={false}
+            //  showsVerticalScrollIndicator={false}
             />
             
         </SafeAreaView>
