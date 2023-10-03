@@ -40,7 +40,7 @@ const QuizScreen=()=>{
   //   },
   // };
   const nextQuestion = ()=>{
-    if(currQuestion<9){
+    if(currQuestion < 9){
       setCurrentQuestion(currQuestion+1);
     }
     else{
