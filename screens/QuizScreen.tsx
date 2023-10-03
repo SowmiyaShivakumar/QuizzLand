@@ -68,14 +68,27 @@ const QuizScreen=()=>{
       correct_answer={questions[currQuestion]?.correct_answer}
       setScore={setScore}
       />} */}
-      {shuffleArray([...questions[currQuestion]?.incorrect_answers, questions[currQuestion]?.correct_answer]).map((item: any, index: any) =>
+      {/* Made changes here */}
+      {questions && questions.length > 0 &&
+        shuffleArray([...questions[currQuestion]?.incorrect_answers, questions[currQuestion]?.correct_answer]).map(
+          (item: any, index: any) => (
+            <Answer
+              answer={item}
+              key={index}
+              correct_answer={questions[currQuestion]?.correct_answer}
+              setScore={setScore}
+              nextQuestion={nextQuestion}
+            />
+          )
+        )}
+      {/* {questions && questions[currQuestion]?.incorrect_answers.map((item: any, index: any) =>
       (<Answer answer={item}
          key={index} 
       correct_answer={questions[currQuestion]?.correct_answer}
       setScore={setScore}
       nextQuestion={nextQuestion}
       />)
-  )}
+  )} */}
       {/* <Answer/>
       <Answer/>
       <Answer/> */}
@@ -83,14 +96,22 @@ const QuizScreen=()=>{
     </SafeAreaView>
   );
 }
-function shuffleArray(array: string[]) {
+const shuffleArray = (array: string[]) => {
   const shuffledArray = [...array];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
   return shuffledArray;
-}
+};
+// function shuffleArray(array: string[]) {
+//   const shuffledArray = [...array];
+//   for (let i = shuffledArray.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+//   }
+//   return shuffledArray;
+// }
 const styles = StyleSheet.create({
     scores:{
       fontSize: 30,
